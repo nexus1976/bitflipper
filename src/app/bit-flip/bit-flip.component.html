@@ -1,2 +1,7 @@
-<mat-slide-toggle [checked]="isChecked" onclick="logIsCheckedValue()"></mat-slide-toggle>
-<label class="bitflip-bitvalue" (aria-label)="bitValue"></label>
+<label class="bit-flip-bitposition" [textContent]="bitPosition" [ngClass]="getClass()"></label>
+<mat-slide-toggle
+  [(ngModel)]="isChecked"
+  (change)="isCheckedValueChanged()"
+  class="bit-flip-toggle">
+</mat-slide-toggle>
+<label class="bit-flip-bitvalue" [textContent]="bitValue"></label>

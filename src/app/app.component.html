@@ -294,14 +294,27 @@
 </style>
 
 <div class="content" role="main">
-  <!-- Highlight Card -->
-  <!-- <div class="card highlight-card card-small">
-    <span>{{ title }} app is running!</span>
-  </div> -->
-
   <div>
-    <app-bit-flip></app-bit-flip>
+    <span class="bit-flip-horizontal">
+      <app-bit-flip
+        *ngFor="let bitMapItem of bitMap; let i = index;"
+        bitPosition={{bitMapItem.bitPos}}
+        (valueOfBitEvent)="updateBitMap($event)">
+      </app-bit-flip>
+    </span>
   </div>
+</div>
+<div>
+  <span>
+    <label>Bits: </label>
+    <label *ngFor="let bitMapItem of bitMap;" [textContent]="bitMapItem.bitValue === true ? 1 : 0"></label>
+  </span>
+</div>
+<div>
+  <span>
+    <label>Decimal Value: </label>
+    <label [textContent]="currentDecValue"></label>
+  </span>
 </div>
 
 <router-outlet></router-outlet>

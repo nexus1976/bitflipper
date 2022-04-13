@@ -2,3 +2,32 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.bit-flip-toggle span.mat-slide-toggle-bar {
+  transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+}
+.bit-flip-bitvalue {
+  padding-left: 13px;
+  display: block;
+  margin-top: 8px;
+  border: 1px;
+  border-color: black;
+  border-style: solid;
+  padding-bottom: 2px;
+}
+.bit-flip-bitposition {
+  display: block;
+  margin-bottom: 6px;
+}
+.bit-flip-single-digit-left-margin {
+  margin-left: 13px;
+}
+.bit-flip-double-digit-left-margin {
+  margin-left: 8px;
+}
+.bit-flip-triple-digit-left-margin {
+  margin-left: 4px;
+}
+.bit-flip-horizontal {
+  display: inline-flex;
+}
