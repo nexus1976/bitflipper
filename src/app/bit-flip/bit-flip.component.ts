@@ -31,6 +31,8 @@ export class BitFlipComponent implements OnInit {
       return "bit-flip-double-digit-left-margin";
     } else if (this.bitPosition.length === 3) {
       return "bit-flip-triple-digit-left-margin";
+    } else if (this.bitPosition.length === 4) {
+      return "bit-flip-four-digit-left-margin";
     } else {
       return '';
     }

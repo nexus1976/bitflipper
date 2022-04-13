@@ -303,18 +303,23 @@
       </app-bit-flip>
     </span>
   </div>
+  <div>
+    <span>
+      <label><b>Bits: </b></label>
+      <label *ngFor="let bitMapItem of bitMap;" [textContent]="bitMapItem.bitValue === true ? 1 : 0"></label>
+    </span>
+  </div>
+  <div>
+    <span>
+      <label><b>Decimal Value: </b></label>
+      <label [textContent]="currentDecValue"></label>
+    </span>
+  </div>
+  <div>
+    <span>
+      <label><b>Hexadecimal Value: </b></label>
+      <label [textContent]="currentHexValue"></label>
+    </span>
+  </div>
 </div>
-<div>
-  <span>
-    <label>Bits: </label>
-    <label *ngFor="let bitMapItem of bitMap;" [textContent]="bitMapItem.bitValue === true ? 1 : 0"></label>
-  </span>
-</div>
-<div>
-  <span>
-    <label>Decimal Value: </label>
-    <label [textContent]="currentDecValue"></label>
-  </span>
-</div>
-
 <router-outlet></router-outlet>
