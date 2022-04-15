@@ -1,7 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0; 
+  font-family: Roboto, 
+  "Helvetica Neue", sans-serif;
+  background-color: darkgray;
+}
+:host {
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.content {
+  display: flex;
+  margin: 25px auto 15px;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: left;
+}
+
+a,
+a:visited,
+a:hover {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #125699;
+}
 .bit-flip-toggle span.mat-slide-toggle-bar {
   transform: rotate(90deg);
   -moz-transform: rotate(90deg);
@@ -21,7 +54,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-size: 11px;
 }
 .bit-flip-single-digit-left-margin {
-  margin-left: 13px;
+  margin-left: 14px;
 }
 .bit-flip-double-digit-left-margin {
   margin-left: 10px;
@@ -34,4 +67,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .bit-flip-horizontal {
   display: inline-flex;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: rgb(16, 78, 16);
+}
+.mat-slide-toggle.mat-checked .mat-ripple-element {
+  background-color: rgb(16, 78, 16);;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: rgba(24, 63, 27, 0.5);
 }
