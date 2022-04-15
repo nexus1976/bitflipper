@@ -26,15 +26,15 @@ export class BitFlipComponent implements OnInit {
   }
   public getClass(): string {
     if (this.bitPosition.length === 1) {
-      return "bit-flip-single-digit-left-margin";
+      return "bit-flip-single-digit";
     } else if (this.bitPosition.length === 2) {
-      return "bit-flip-double-digit-left-margin";
+      return "bit-flip-double-digit";
     } else if (this.bitPosition.length === 3) {
-      return "bit-flip-triple-digit-left-margin";
+      return "bit-flip-triple-digit";
     } else if (this.bitPosition.length === 4) {
-      return "bit-flip-four-digit-left-margin";
+      return "bit-flip-four-digit";
     } else {
-      return '';
+      return 'bit-flip-big-digits';
     }
   }
   ngOnInit(): void {

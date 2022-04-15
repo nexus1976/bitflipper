@@ -1,5 +1,16 @@
 <div class="content" role="main">
   <div>
+    <span class="bit-flip-bitness">
+      <label><b>Bitness: </b></label>
+      <mat-select [(value)]="currentBitness" style="width: 80px;" (selectionChange)="onBitnessChanged($event)">
+        <mat-option *ngFor="let bv of bitnessValues" [value]="bv.bitnessValue">
+          {{bv.bitnessDisplay}}
+        </mat-option>
+      </mat-select>
+    </span>
+  </div>
+  <br />
+  <div>
     <span class="bit-flip-horizontal">
       <app-bit-flip
         *ngFor="let bitMapItem of bitMap; let i = index;"
