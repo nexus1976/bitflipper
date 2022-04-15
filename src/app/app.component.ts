@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
+enum BitnessEnum {
+  Bitness8 = 0,
+  Bitness16 = 1,
+  Bitness32 = 2,
+  Bitness64 = 3
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,13 +15,20 @@ export class AppComponent implements OnInit {
   bitMap: Array<IBitValueObject> = new Array<IBitValueObject>();
   currentDecValue: number = 0;
   currentHexValue: string = '0';
+  currentBitness: BitnessEnum = BitnessEnum.Bitness8;
+  bitnessValues: Array<IBitnessValueObject> = new Array<IBitnessValueObject>();
   constructor () {
 
   }
 
   ngOnInit(): void {
-    const maxBitPositions = 16;
+    this.hydrateBitnessValues();
+    this.hydrateBitMap();
+  }
+  hydrateBitMap() {
+    const maxBitPositions = this.getMaxBitPositions(this.currentBitness);
     let currentBitPos = 1;
+    this.clearBitMapArray();
     for (let index = 0; index < maxBitPositions; index++) {
       const element: IBitValueObject = {
         bitPos: currentBitPos,
@@ -27,7 +39,30 @@ export class AppComponent implements OnInit {
     }
     this.bitMap.sort((a, b) => b.bitPos - a.bitPos);
   }
-
+  hydrateBitnessValues(): void {
+    this.bitnessValues.push({
+      bitnessValue: BitnessEnum.Bitness8,
+      bitnessDisplay: "8 bits"
+    });
+    this.bitnessValues.push({
+      bitnessValue: BitnessEnum.Bitness16,
+      bitnessDisplay: "16 bits"
+    });
+    this.bitnessValues.push({
+      bitnessValue: BitnessEnum.Bitness32,
+      bitnessDisplay: "32 bits"
+    });
+    // saving 64 bits for later
+    // this.bitnessValues.push({
+    //   bitnessValue: BitnessEnum.Bitness64,
+    //   bitnessDisplay: "64 bits"
+    // });        
+  }
+  onBitnessChanged(e: any): void {
+    this.hydrateBitMap();
+    this.recalculateDecValue();
+  }
+  
   updateBitMap(e: any): void {
     const el = this.bitMap.find(d => d.bitPos === e.bitPos);
     if (el) {
@@ -35,7 +70,6 @@ export class AppComponent implements OnInit {
     }
     this.recalculateDecValue();
   }
-
   recalculateDecValue(): void {
     let newDecValue = 0;
     for (let index = 0; index < this.bitMap.length; index++) {
@@ -47,7 +81,6 @@ export class AppComponent implements OnInit {
     this.currentDecValue = newDecValue;
     this.recalculateHexValue();
   }
-
   recalculateHexValue(): void {
     if (this.currentDecValue === 0) {
       this.currentHexValue = '0';
@@ -67,6 +100,7 @@ export class AppComponent implements OnInit {
     }
     this.currentHexValue = newHexValue.split("").reverse().join("").replace(/^0+/, '');
   }
+
   getHexDigit(decDigit: number): string {
     if (decDigit < 10) {
       return decDigit.toString();
@@ -86,6 +120,26 @@ export class AppComponent implements OnInit {
         return "F";
       default:
         return "";
+    }
+  }
+  clearBitMapArray(): void {
+    if (this.bitMap.length === 0) {
+      return;
+    }
+    this.bitMap.splice(0,this.bitMap.length);
+  }
+  getMaxBitPositions(bitness: BitnessEnum): Number {
+    switch (bitness) {
+      case BitnessEnum.Bitness8:
+        return 8;
+      case BitnessEnum.Bitness16:
+        return 16;
+      case BitnessEnum.Bitness32:
+        return 32;
+      case BitnessEnum.Bitness64:
+        return 64;
+      default:
+        return 8;
     }
   }
 }

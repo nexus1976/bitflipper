@@ -17,7 +17,7 @@ body {
 }
 
 .content {
-  display: flex;
+  display: inline-block;
   margin: 25px auto 15px;
   padding: 0 16px;
   max-width: 960px;
@@ -53,17 +53,21 @@ a:hover {
   margin-bottom: 6px;
   font-size: 11px;
 }
-.bit-flip-single-digit-left-margin {
+.bit-flip-single-digit {
   margin-left: 14px;
 }
-.bit-flip-double-digit-left-margin {
+.bit-flip-double-digit {
   margin-left: 10px;
 }
-.bit-flip-triple-digit-left-margin {
+.bit-flip-triple-digit {
   margin-left: 8px;
 }
-.bit-flip-four-digit-left-margin {
-  margin-left: 6px;
+.bit-flip-four-digit {
+  margin-left: 4px;
+}
+.bit-flip-big-digits {
+  margin-left: 8px;
+  font-size: 8px;
 }
 .bit-flip-horizontal {
   display: inline-flex;
